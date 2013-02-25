@@ -1,1 +1,17 @@
 <h1>List of people</h1>
+
+<table class="member">
+  <col class="id" />
+  <col class="name" />
+  <tr>
+    <th>Member ID</th>
+    <th>Member Name</th>
+  </tr>
+  <% @members.each do |member| %>
+  <tr>
+    <td><%= member.id %></td>
+    <td><%= member.name %></td>
+  </tr>
+  <% end %>
+</table>
+
