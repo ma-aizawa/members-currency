@@ -1,3 +1,3 @@
 class Member < ActiveRecord::Base
-  attr_accessible :id, :name, :profile
+  attr_accessible :member_id, :name, :profile
 end

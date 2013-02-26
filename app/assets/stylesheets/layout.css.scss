@@ -29,3 +29,13 @@ div#contents {
 table, td, th {
   border: 1px solid;
 }
+
+ul.menu-list {
+  list-style-type: none;
+  padding: 5px;
+
+  li {
+    float: left;
+    margin-left: 5px;
+  }
+}

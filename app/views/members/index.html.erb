@@ -9,8 +9,8 @@
   </tr>
   <% @members.each do |member| %>
   <tr>
-    <td><%= member.id %></td>
-    <td><%= member.name %></td>
+    <td><%= member.member_id %></td>
+    <td><%= link_to member.name, member %></td>
   </tr>
   <% end %>
 </table>

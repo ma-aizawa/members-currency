@@ -11,9 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130222162604) do
+ActiveRecord::Schema.define(:version => 20130226092216) do
+
+  create_table "currencies", :force => true do |t|
+    t.integer  "currency_id"
+    t.string   "name"
+    t.integer  "publisher"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "log_for_currencies", :force => true do |t|
+    t.integer  "currency_id"
+    t.integer  "currency"
+    t.integer  "amount"
+    t.text     "log"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "members", :force => true do |t|
+    t.integer  "member_id"
     t.string   "name"
     t.string   "profile"
     t.datetime "created_at", :null => false

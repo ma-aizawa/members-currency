@@ -1,0 +1,19 @@
+<h1>List of currency</h1>
+
+<table class="currency">
+  <tr>
+    <th>Currency ID</th>
+    <th>Currency Name</th>
+    <th>Publisher</th>
+  </tr>
+  <% @currenies.each do |currency| %>
+  <tr>
+    <td><%= currency.currency_id %></td>
+    <td><%= currency.name %></td>
+    <td><%= currency.publisher %></td>
+  </tr>
+  <% end %>
+</table>
+
+
+

@@ -1,4 +1,5 @@
 MembersCurrency::Application.routes.draw do
-  root to: 'people#index'
-  resources :people
+  root to: 'members#index'
+  resources :members
+  resources :currencies
 end
