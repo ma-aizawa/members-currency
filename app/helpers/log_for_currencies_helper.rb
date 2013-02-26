@@ -1,0 +1,2 @@
+module LogForCurrenciesHelper
+end

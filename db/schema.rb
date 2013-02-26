@@ -23,11 +23,12 @@ ActiveRecord::Schema.define(:version => 20130226092216) do
 
   create_table "log_for_currencies", :force => true do |t|
     t.integer  "currency_id"
-    t.integer  "currency"
     t.integer  "amount"
     t.text     "log"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "from_member_id"
+    t.integer  "to_member_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "members", :force => true do |t|
