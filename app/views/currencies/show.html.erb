@@ -1,0 +1,35 @@
+<h1>Currency Detail</h1>
+
+<div class="currency-detail-tables">
+  <ul class="currency-detail">
+    <li>
+      <table class="currency">
+        <tr>
+          <td>項目</td>
+          <td>内容</td>
+        </tr>
+        <tr>
+          <td>Currency ID</td>
+          <td><%= @currency.currency_id %></td>
+        </tr>
+        <tr>
+          <td>Currency Name</td>
+          <td><%= @currency.name %></td>
+        </tr>
+        <tr>
+          <td>発行者</td>
+          <td><%= @currency.publisher_name %></td>
+        </tr>
+        <tr>
+          <td>単位</td>
+          <td>未実装<%#= @currency.unit %></td>
+        </tr>
+        <tr>
+          <td>総流通量</td>
+          <td><%= number_with_delimiter(@currency.distribution) %></td>
+        </tr>
+      </table>
+    </li>
+  </ul>
+</div>
+

@@ -1,17 +1,39 @@
 <h1>Member Detail</h1>
 
-<table class="member">
-  <tr>
-    <th>項目</th>
-    <th>内容</th>
-  </tr>
-  <tr>
-    <td>Member ID</td>
-    <td><%= @member.member_id %></td>
-  </tr>
-  <tr>
-    <td>Member Name</td>
-    <td><%= @member.name %></td>
-  </tr>
-</table>
+<div class="member-detail-information">
+  <ul class="member-detail">
+    <li>
+      <table class="member">
+        <tr>
+          <th>項目</th>
+          <th>内容</th>
+        </tr>
+        <tr>
+          <td>Member ID</td>
+          <td><%= @member.member_id %></td>
+        </tr>
+        <tr>
+          <td>Member Name</td>
+          <td><%= @member.name %></td>
+        </tr>
+      </table>
+    </li>
+
+    <li>
+      <table class="member-log">
+        <tr>
+          <td>Currency Name</td>
+          <td>持っている量</td>
+        </tr>
+        <% @member.currency_list.each do |currency| %>
+          <tr>
+            <td><%= currency.name %></td>
+            <td><%= currency.amount %></td>
+          </tr>
+        <% end %>
+      </table>
+    </li>
+  </ul>
+
+</div>
 

@@ -1,8 +1,14 @@
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   background-color: #5555be;
 }
 
 div#wrapper {
+  height: 100%;
   width: 800px;
   margin: 10px auto;
   background-color: #fff;
@@ -14,11 +20,19 @@ div#header, div#footer {
   padding: 5px;
 }
 
+div#header {
+  height: 16%;
+}
+
 div#footer {
   text-align: center;
+  position: absolute;
+  bottom: 0px;
+  height: 5%;
 }
 
 div#contents {
+  height: 71%;
   background-color: #fff;
   color: #000;
   margin: 5px;

@@ -5,12 +5,14 @@
     <th>Currency ID</th>
     <th>Currency Name</th>
     <th>Publisher</th>
+    <td>流通量</th>
   </tr>
   <% @currenies.each do |currency| %>
   <tr>
     <td><%= currency.currency_id %></td>
-    <td><%= currency.name %></td>
-    <td><%= currency.publisher %></td>
+    <td><%= link_to currency.name, currency %></td>
+    <td><%= currency.publisher_name %></td>
+    <td><%= number_with_delimiter(currency.distribution) %></td>
   </tr>
   <% end %>
 </table>
