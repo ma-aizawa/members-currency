@@ -16,4 +16,5 @@ gem 'pry'
 gem 'pry-doc'
 gem 'pry-rails'
 gem 'pry-coolline'
+gem 'hirb-unicode'
 
