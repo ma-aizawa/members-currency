@@ -1,0 +1,21 @@
+<table class="log">
+  <tr>
+    <th>Date</th>
+    <th>Currency Name</th>
+    <th>Amount</th>
+    <th>Operation</th>
+    <th>From Member</th>
+    <th>To Member</th>
+  </tr>
+  <% logs.each do |log| %>
+  <tr>
+    <td><%= log.operation_date.to_s %></td>
+    <td><%= log.currency_name %></td>
+    <td><%= "#{number_with_delimiter(log.amount)} #{log.unit}" %></td>
+    <td><%= log.log %></td>
+    <td><%= log.from_member_name %></td>
+    <td><%= log.to_member_name %></td>
+  </tr>
+  <% end %>
+</table>
+

@@ -31,26 +31,7 @@
       </table>
     </li>
     <li>
-      <table class="log">
-        <tr>
-          <th>Date</th>
-          <th>Currency Name</th>
-          <th>Amount</th>
-          <th>Operation</th>
-          <th>From Member</th>
-          <th>To Member</th>
-        </tr>
-        <% @logs.each do |log| %>
-        <tr>
-          <td>Now empty</td>
-          <td><%= log.currency_id %></td>
-          <td><%= log.amount %></td>
-          <td><%= log.log %></td>
-          <td><%= log.from_member_id %></td>
-          <td><%= log.to_member_id %></td>
-        </tr>
-        <% end %>
-      </table>
+      <%= render 'shared/log_list', logs: @logs %>
     </li>
   </ul>
 </div>

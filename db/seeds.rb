@@ -16,12 +16,14 @@ end
   to_member_id = n % 5
   currency_id = n % 3
   minus = (n % 13).zero? ? -1 : 1
+  time = DateTime.current
   LogForCurrency.create(
     currency_id: currency_id,
     amount: n**2 * minus,
     log: "Operation #{n}",
     from_member_id: from_member_id,
-    to_member_id: to_member_id
+    to_member_id: to_member_id,
+    operation_date: time
   )
 end
 
