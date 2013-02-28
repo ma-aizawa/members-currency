@@ -4,6 +4,7 @@ class CreateCurrencies < ActiveRecord::Migration
       t.integer :currency_id
       t.string :name
       t.integer :publisher
+      t.string :unit
 
       t.timestamps
     end

@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20130226092216) do
     t.integer  "currency_id"
     t.string   "name"
     t.integer  "publisher"
+    t.string   "unit"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

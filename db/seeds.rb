@@ -7,7 +7,7 @@ end
 
 3.times do |n|
   if Currency.where(currency_id: n).empty?
-    Currency.create(currency_id: n, name: "Currency#{n}", publisher:n)
+    Currency.create(currency_id: n, name: "Currency#{n}", publisher:n, unit: "unit#{n}")
   end
 end
 

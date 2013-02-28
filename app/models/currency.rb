@@ -1,5 +1,5 @@
 class Currency < ActiveRecord::Base
-  attr_accessible :currency_id, :name, :publisher
+  attr_accessible :currency_id, :name, :publisher, :unit
   ## TODO: Add field name is "unit".
 
   def distribution

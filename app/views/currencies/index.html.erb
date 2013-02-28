@@ -2,17 +2,15 @@
 
 <table class="currency">
   <tr>
-    <th>Currency ID</th>
     <th>Currency Name</th>
     <th>Publisher</th>
     <td>流通量</th>
   </tr>
   <% @currenies.each do |currency| %>
   <tr>
-    <td><%= currency.currency_id %></td>
     <td><%= link_to currency.name, currency %></td>
     <td><%= currency.publisher_name %></td>
-    <td><%= number_with_delimiter(currency.distribution) %></td>
+    <td><%= currency_distribution_with_unit(currency) %></td>
   </tr>
   <% end %>
 </table>
