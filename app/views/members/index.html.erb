@@ -1,16 +1,18 @@
 <h1>List of members</h1>
 
-<table class="member">
+<table class="table">
   <col class="id" />
   <col class="name" />
   <tr>
     <th>Member ID</th>
     <th>Member Name</th>
+    <th></th>
   </tr>
   <% @members.each do |member| %>
   <tr>
     <td><%= member.member_id %></td>
     <td><%= link_to member.name, member %></td>
+    <td>Login</td>
   </tr>
   <% end %>
 </table>

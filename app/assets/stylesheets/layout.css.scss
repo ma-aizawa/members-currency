@@ -1,3 +1,4 @@
+/*
 html {
   height: 100%;
 }
@@ -36,6 +37,15 @@ div#contents {
   border: solid 1px #ccc;
 }
 
+table {
+  border: 1px solid;
+  margin: 10px;
+
+  td, th {
+    border: 1px solid;
+    padding: 4px;
+  }
+}
 table, td, th {
   border: 1px solid;
   margin: 10px;
@@ -50,3 +60,5 @@ ul.menu-list {
     margin-left: 5px;
   }
 }
+
+*/

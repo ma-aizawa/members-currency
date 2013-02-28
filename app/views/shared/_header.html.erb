@@ -1,16 +1,22 @@
 <div id="header">
-  <h3>メンバーと通貨の実験アプリ</h3>
-  <div id="menu">
-    <ul class="menu-list">
-      <li class="member">
-        <%= link_to 'メンバーリスト', :members %>
-      </li>
-      <li class="currency">
-        <%= link_to '通貨リスト', :currencies %>
-      </li>
-      <li class="log">
-        <%= link_to 'ログリスト', :log_for_currencies %>
-      </li>
-    </ul>
+  <div class="masthead">
+    <h3>メンバーと通貨の実験アプリ</h3>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <ul class="nav">
+            <li class="member">
+              <%= link_to 'メンバーリスト', :members %>
+            </li>
+            <li class="currency">
+              <%= link_to '通貨リスト', :currencies %>
+            </li>
+            <li class="log">
+              <%= link_to 'ログリスト', :log_for_currencies %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

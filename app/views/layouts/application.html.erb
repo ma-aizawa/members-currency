@@ -3,11 +3,12 @@
   <head>
     <title>Member and currency - メンバーと通貨の実験アプリ</title>
     <%= stylesheet_link_tag    "application", :media => "all" %>
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div id="wrapper">
+    <div class="container">
       <%= render "shared/header" %>
       <div id="contents">
         <%= yield %>
