@@ -1,6 +1,8 @@
 <div id="header">
   <div class="masthead">
     <h3>メンバーと通貨の実験アプリ</h3>
+    <form class="pull-right">
+    </form>
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
@@ -14,6 +16,11 @@
             <li class="log">
               <%= link_to 'ログリスト', :log_for_currencies %>
             </li>
+            <% if @login_now %>
+            <li class="pull-right logout">
+              <%= link_to 'Logout', :logout %>
+            </li>
+            <% end %>
           </ul>
         </div>
       </div>

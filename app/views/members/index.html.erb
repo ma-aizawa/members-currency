@@ -12,7 +12,7 @@
   <tr>
     <td><%= member.member_id %></td>
     <td><%= link_to member.name, member %></td>
-    <td>Login</td>
+    <td><%= login_link(@login_now, member) %></td>
   </tr>
   <% end %>
 </table>
