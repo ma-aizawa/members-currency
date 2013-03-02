@@ -30,8 +30,8 @@ class MembersController < ApplicationController
     @to_member = Member.get(params[:to_id])
     @from_member = Member.get(params[:from_id])
 
-    @to_member.set_currency_info(@currency).calculate_currency(@currency.currency_id)
-    @from_member.set_currency_info(@currency).calculate_currency(@currency.currency_id)
+    @to_member.set_currency_info(@currency)
+    @from_member.set_currency_info(@currency)
   end
 
   def give

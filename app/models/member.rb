@@ -19,24 +19,6 @@ class Member < ActiveRecord::Base
     self
   end
 
-  def calculate_currency(currency_id)
-    log_list = LogForCurrency.find(
-      :all,
-      conditions: {
-        currency_id: currency_id,
-        to_member_id: self.member_id
-      }
-    )
-    amount = log_list.inject(0) do |sum, log|
-      sum += log.amount
-    end
-    currency_information = self.currency_list.find{|saved_currency|
-      saved_currency.id == currency_id
-    }
-    currency_information.amount = amount
-    self
-  end
-
   def currency_amount(currency_id)
     currency_info = currency_list.find{|currency| currency.id == currency_id}
     currency_info.amount
@@ -77,6 +59,7 @@ class Member < ActiveRecord::Base
     end
 
     def run
+      ## TODO: Add trunsaction code.
       log = LogForCurrency.new
       log.currency_id = self.currency.currency_id
       log.from_member_id = self.from.member_id
@@ -86,6 +69,14 @@ class Member < ActiveRecord::Base
       log.log = operation_log
 
       log.save
+
+      from_amount = AmountOfCurrency.get(self.from.member_id, self.currency.currency_id)
+      from_amount.amount -= self.amount.to_i
+      from_amount.save
+
+      to_amount = AmountOfCurrency.get(self.to_member.member_id, self.currency.currency_id)
+      to_amount.amount += self.amount.to_i
+      to_amount.save
 
       true
     end
