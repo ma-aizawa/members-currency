@@ -15,7 +15,7 @@ class Currency < ActiveRecord::Base
   end
 
   def publisher_name
-    Member.find(:first, conditions: {member_id: self.publisher}).name
+    Member.get(self.publisher).name
   end
 end
 

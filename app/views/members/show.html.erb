@@ -20,15 +20,23 @@
     </li>
 
     <li>
-      <table class="member-log">
+      <table class="table">
         <tr>
           <td>Currency Name</td>
           <td>持っている量</td>
+          <% if @login_now %>
+            <td></td>
+          <% end %>
         </tr>
         <% @member.currency_list.each do |currency| %>
           <tr>
             <td><%= currency.name %></td>
             <td><%= currency.amount %></td>
+            <% if @login_now %>
+              <td>
+                <%= give_page_link(@member, currency) %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
       </table>

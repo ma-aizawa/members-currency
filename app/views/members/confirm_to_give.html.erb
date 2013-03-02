@@ -1,0 +1,35 @@
+<%= form_for(@from_member, html: {class: 'form-horizontal', method: 'POST'}, url: create_give_action_path(@from_member, @to_member, @currency)) do |f| %>
+  <fieldset>
+    <legend>Give <%= @currency.name %> to <%= @to_member.name %></legend>
+    <div class="control-group">
+      <label class="control-label"><%= @to_member.name %> has</label>
+      <div class="controls">
+        <span>
+          <%= @to_member.currency_amount(@currency.currency_id) %>
+          <%= @currency.unit %>
+        </span>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">You have</label>
+      <div class="controls">
+        <span>
+          <%= @from_member.currency_amount(@currency.currency_id) %>
+          <%= @currency.unit %>
+        </span>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Given amount</label>
+      <div class="controls">
+        <select class="span2" name="given_amount">
+          <%= get_amount_of_500_per_options(@from_member, @currency) %>
+        </select>
+        <%= @currency.unit %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Give my currency!!</button>
+    </div>
+  </fieldset>
+<% end %>
