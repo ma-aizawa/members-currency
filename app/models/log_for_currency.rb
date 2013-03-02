@@ -28,6 +28,7 @@ class LogForCurrency < ActiveRecord::Base
   end
 
   def member_name(member_id)
-    Member.find(:first, conditions: {member_id: member_id}).name
+    Member.get(member_id).name
   end
 end
+
