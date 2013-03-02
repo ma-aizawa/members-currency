@@ -6,6 +6,8 @@ class LogForCurrency < ActiveRecord::Base
   attr_accessible :to_member_id   # Member is operated currency
   attr_accessible :operation_date # Datetime at operating
 
+  SYSTEM_ID = -1
+
   def currency_name
     currency.name
   end
@@ -28,7 +30,7 @@ class LogForCurrency < ActiveRecord::Base
   end
 
   def member_name(member_id)
-    return 'System' if member_id == -1
+    return 'System' if member_id == SYSTEM_ID
     Member.get(member_id).name
   end
 end

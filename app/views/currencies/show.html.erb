@@ -31,6 +31,13 @@
       </table>
     </li>
     <li>
+      <% if @currency.publisher == login_member.member_id %>
+      <form method="GET" action="<%= currency_publish_path(@currency.currency_id) %>">
+        <button type="submit" class="btn btn-primary"><%= "#{@currency.name}を追加発行する！" %></button>
+      </form>
+      <% end %>
+    </li>
+    <li>
       <%= render 'shared/log_list', logs: @logs %>
     </li>
   </ul>

@@ -1,6 +1,6 @@
 module MembersHelper
   def login_link(login_now, member)
-    login_now ? 'You are logined.' : link_to('Login', login_path(member.member_id))
+    login_now ? 'You can not login. Because you are logined.' : link_to('Login', login_path(member.member_id))
   end
 
   def give_page_link(to_member, currency_information)

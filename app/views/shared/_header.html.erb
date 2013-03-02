@@ -28,5 +28,14 @@
         </div>
       </div>
     </div>
+    <% if flash.key?(:notice) %>
+      <div class="control-group success"><span class="help-inline"><%= flash[:error] %></span></div>
+    <% end %>
+    <% if flash.key?(:alert) %>
+      <div class="control-group warning"><span class="help-inline"><%= flash[:alert] %></span></div>
+    <% end %>
+    <% if flash.key?(:error) %>
+      <div class="control-group error"><span class="help-inline"><%= flash[:error] %></span></div>
+    <% end %>
   </div>
 </div>

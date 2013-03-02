@@ -29,9 +29,16 @@ MembersCurrency::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   config.active_record.auto_explain_threshold_in_seconds = 0.5
 
+  # See everything in the log (default is :info)
+  config.log_level = :warn
+
+  # Prepend all log lines with the following tags
+  # config.log_tags = [ :subdomain, :uuid ]
+
   # Do not compress assets
   config.assets.compress = false
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
 end

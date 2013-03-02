@@ -13,3 +13,4 @@ class AmountOfCurrency < ActiveRecord::Base
     end
   end
 end
+

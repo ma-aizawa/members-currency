@@ -8,4 +8,7 @@ MembersCurrency::Application.routes.draw do
   get '/logout', to: 'members#logout', as: :logout
   get '/member/give/:from_id/:to_id/:currency_id', to: 'members#confirm_to_give', as: :confirm_give
   post '/member/give/:from_id/:to_id/:currency_id', to: 'members#give', as: :give
+  get '/currency/publish/:currency_id', to: 'currencies#publish', as: :currency_publish
+  post '/currency/publish/:currency_id', to: 'currencies#add_amount', as: :post_currency_publish
 end
+

@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
+  include ErrorHandling
+
   before_filter :login_setting
+  rescue_from Exception, with: :error_handle
 
   protect_from_forgery
 
@@ -9,6 +12,10 @@ class ApplicationController < ActionController::Base
 
   def save_login(member_id)
     session[:login] = member_id
+  end
+
+  def get_login_member_id
+    session[:login]
   end
 
   def login?

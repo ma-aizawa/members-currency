@@ -20,7 +20,7 @@ end
     currency_id: currency_id,
     amount: n**2 * minus,
     log: "Operation #{n}",
-    from_member_id: -1,
+    from_member_id: LogForCurrency::SYSTEM_ID,
     to_member_id: to_member_id,
     operation_date: time
   )

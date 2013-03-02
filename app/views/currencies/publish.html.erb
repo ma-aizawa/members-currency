@@ -1,0 +1,66 @@
+<%= form_for(@currency, html: {class: 'form-horizontal', method: 'POST'}, url: post_currency_publish_path(@currency.currency_id)) do |f| %>
+  <fieldset>
+    <legend><%= "Add amount of #{@currency.name}" %></legend>
+    <div class="control-group">
+      <label class="control-label">通貨名</label>
+      <div class="controls">
+        <span><%= @currency.name %></span>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">発行者</label>
+      <div class="controls">
+        <span><%= @currency.publisher_name %></span>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">単位名</label>
+      <div class="controls">
+        <span><%= @currency.unit %></label>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">現在の総流通量</label>
+      <div class="controls">
+        <span><%= @currency.distribution %></label>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">追加流通量</label>
+      <div class="controls">
+        <span><input id="add_amount" type="number" class="input-medium" name="add_amount" placeholder="0"></span>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <button id="distribution_button" type="button" class="btn">追加分の分配を決める</button>
+      </div>
+    </div>
+    <div id="distribution_member" class="hide">
+      <div class="control-group">
+        <label class="control-label">分配先メンバー</label>
+        <div class="controls">
+          <select name="[distribution_members][]" class="input-medium">
+            <%= get_member_list %>
+          </select>
+          &nbsp;&nbsp;
+          <input type="number" class="input-medium member_amount" name="[member_amount][]" placeholder="0">
+          &nbsp;&nbsp;
+          <button type="button" class="btn remove_member hide" >メンバー削除</button>
+        </div><br>
+        <div class="controls button_control">
+          <button type="button" class="btn add_member">メンバー追加</button>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button id="submit_button" type="submit" class="btn btn-primary">発行する！</button>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
+<script>
+  $(function(){
+    currency = new Currency();
+  });
+</script>
+
