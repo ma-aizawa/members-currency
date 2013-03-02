@@ -9,7 +9,6 @@ class MembersController < ApplicationController
     currency_list = Currency.all
     currency_list.each do |currency|
       @member.set_currency_info(currency)
-      @member.calculate_currency(currency.currency_id)
     end
   end
 

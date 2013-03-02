@@ -24,10 +24,12 @@ class LogForCurrency < ActiveRecord::Base
 
   private
   def currency
-    @currency ||= Currency.find(:first, conditions: {currency_id: self.currency_id})
+    @currency ||= Currency.get(self.currency_id)
   end
 
   def member_name(member_id)
-    Member.find(:first, conditions: {member_id: member_id}).name
+    return 'System' if member_id == -1
+    Member.get(member_id).name
   end
 end
+

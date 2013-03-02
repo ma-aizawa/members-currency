@@ -5,7 +5,13 @@ class CurrenciesController < ApplicationController
 
   def show
     @currency = Currency.find(:first, conditions: {id: params[:id]})
-    @logs = LogForCurrency.find(:all, conditions: {currency_id: @currency.currency_id})
+    @logs = LogForCurrency.find(
+      :all,
+      conditions: {
+        currency_id: @currency.currency_id
+      },
+      order: 'operation_date desc'
+    )
   end
 end
 

@@ -1,5 +1,5 @@
 class LogForCurrenciesController < ApplicationController
   def index
-    @logs = LogForCurrency.all
+    @logs = LogForCurrency.all(order: 'operation_date desc')
   end
 end

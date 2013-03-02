@@ -2,30 +2,20 @@ class Member < ActiveRecord::Base
   attr_accessible :member_id, :name, :profile
   attr_accessor :currency_list
 
-  def set_currency_info(currency)
-    self.currency_list ||= []
-    currency = Currency.find(:first, conditions: {currency_id: currency.currency_id})
-    currency_information = CurrencyInformation.new
-    currency_information.id = currency.currency_id
-    currency_information.name = currency.name
-    self.currency_list.push(currency_information)
+  class << self
+    def get(member_id)
+      Member.find(:first, conditions: {member_id: member_id})
+    end
   end
 
-  def calculate_currency(currency_id)
-    log_list = LogForCurrency.find(
-      :all,
-      conditions: {
-        currency_id: currency_id,
-        to_member_id: self.member_id
-      }
-    )
-    amount = log_list.inject(0) do |sum, log|
-      sum += log.amount
-    end
-    currency_information = self.currency_list.find{|saved_currency|
-      saved_currency.id == currency_id
-    }
-    currency_information.amount = amount
+  def set_currency_info(currency)
+    self.currency_list ||= []
+    currency_id = currency.currency_id
+    currency_information = CurrencyInformation.new
+    currency_information.id = currency_id
+    currency_information.name = currency.name
+    currency_information.amount = AmountOfCurrency.get(self.member_id, currency_id).amount
+    self.currency_list.push(currency_information)
   end
 
   class CurrencyInformation
@@ -33,4 +23,6 @@ class Member < ActiveRecord::Base
     attr_accessor :name
     attr_accessor :amount
   end
+
 end
+
