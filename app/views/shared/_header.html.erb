@@ -1,8 +1,11 @@
 <div id="header">
   <div class="masthead">
+    <ul class="nav nav-pills pull-right">
+    <% if @login_now %>
+      <li><%= login_member_name %></li>
+    <% end %>
+    </ul>
     <h3>メンバーと通貨の実験アプリ</h3>
-    <form class="pull-right">
-    </form>
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
