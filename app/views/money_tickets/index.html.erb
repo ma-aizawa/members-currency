@@ -1,0 +1,18 @@
+<h1>お金チケット一覧</h1>
+
+<table class="table">
+  <tr>
+    <th>チケット番号</th>
+    <th>金額</th>
+    <th>ステータス</th>
+    <th>使用日時</th>
+  </tr>
+  <% @tickets.each do |ticket| %>
+    <tr>
+      <td><%= ticket.ticket_id %></td>
+      <td><%= ticket.amount %></td>
+      <td><%= ticket.get_status %></td>
+      <td><%= ticket.get_used_date %></td>
+  <% end %>
+</table>
+

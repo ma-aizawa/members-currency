@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ticket_id: 1
+  currency_id: 1
+  amount: 1
+
+two:
+  ticket_id: 1
+  currency_id: 1
+  amount: 1

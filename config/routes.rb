@@ -3,6 +3,7 @@ MembersCurrency::Application.routes.draw do
   resources :members
   resources :currencies
   resources :log_for_currencies
+  resources :money_tickets
 
   get '/login/:member_id', to: 'members#login', as: :login
   get '/logout', to: 'members#logout', as: :logout

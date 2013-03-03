@@ -74,3 +74,11 @@ Member.all.each do |member|
   end
 end
 
+100.times do |n|
+  MoneyTicket.create(
+    ticket_id: n,
+    currency_id: -1,
+    amount: 500,
+    status: MoneyTicket::NO_USE
+  )
+end
