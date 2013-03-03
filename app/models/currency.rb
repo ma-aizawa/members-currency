@@ -1,10 +1,29 @@
 class Currency < ActiveRecord::Base
   attr_accessible :currency_id, :name, :publisher, :unit
 
+  validates :name, presence: true, length: {maximum: 255}
+  validates :unit, presence: true, length: {maximum: 50}
+
   class << self
     def get(currency_id)
-      Currency.find(:first, conditions: {currency_id: currency_id})
+      self.class.find(:first, conditions: {currency_id: currency_id})
     end
+  end
+
+  def load_data(params)
+    self.name = params[:name]
+    self.unit = params[:unit]
+    self
+  end
+
+  def set_publisher(member_id)
+    self.publisher = member_id
+    self
+  end
+
+  def generate_currency_id
+    self.currency_id = self.class.all.max{|a, b| a.currency_id <=> b.currency_id}.currency_id + 1
+    self
   end
 
   def distribution

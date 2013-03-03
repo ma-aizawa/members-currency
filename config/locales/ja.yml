@@ -1,0 +1,18 @@
+ja:
+  currencies:
+    new:
+      name: '通貨名'
+      unit: '通貨単位名'
+
+  activerecord:
+    errors:
+      models:
+        currency:
+          attributes:
+            name:
+              blank: 'の入力は必須です。'
+              too_long: 'は半角255文字までです。'
+            unit:
+              blank: 'の入力は必須です。'
+              too_long: 'は半角100文字までです。'
+

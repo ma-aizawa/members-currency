@@ -1,0 +1,28 @@
+<%= form_for @currency, html: {class: 'form-horizontal'} do |f| %>
+  <fieldset>
+    <legend>通貨の新規発行</legend>
+    <div class="<%= control_group_class(f, :name) %>">
+      <label class="control-label">通貨名</label>
+      <div class="controls">
+        <%= f.text_field :name, max_length: 400 %>
+        <%= error_message(@currency, :name) %>
+      </div>
+    </div>
+    <div class="<%= control_group_class(f, :unit) %>">
+      <label class="control-label">通貨単位名</label>
+      <div class="controls">
+        <%= f.text_field :unit, max_length: 255 %>
+        <%= error_message(@currency, :unit) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">発行者</label>
+      <div class="controls">
+        <span><%= login_member_name %></span>
+    </div>
+  </fieldset>
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">発行する！</button>
+  </div>
+<% end %>
+

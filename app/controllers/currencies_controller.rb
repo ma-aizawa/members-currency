@@ -1,3 +1,4 @@
+# -*- encoding: UTF-8 -*-
 class CurrenciesController < ApplicationController
   def index
     @currenies = Currency.all
@@ -12,6 +13,24 @@ class CurrenciesController < ApplicationController
       },
       order: 'operation_date desc'
     )
+  end
+
+  def new
+    @currency = Currency.new
+  end
+
+  def create
+    currency = Currency.new.load_data(params[:currency])
+    currency.set_publisher(get_login_member_id).generate_currency_id
+
+    if currency.invalid?
+      @currency = currency
+      flash.now[:error] = "登録データに誤りがあります。もう一度入力してください。"
+      render :new and return
+    end
+
+    currency.save
+    redirect_to currency
   end
 
   def publish

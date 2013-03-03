@@ -33,7 +33,7 @@
     <li>
       <% if @currency.publisher == login_member.member_id %>
       <form method="GET" action="<%= currency_publish_path(@currency.currency_id) %>">
-        <button type="submit" class="btn btn-primary"><%= "#{@currency.name}を追加発行する！" %></button>
+        <button type="submit" class="btn btn-primary"><%= "#{@currency.name}の流通を増やす！" %></button>
       </form>
       <% end %>
     </li>
