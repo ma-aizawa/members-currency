@@ -7,7 +7,7 @@
     <th>From</th>
     <th>To</th>
   </tr>
-  <% logs.each do |log| %>
+  <% @logs.each do |log| %>
   <tr>
     <td><%= log.operation_date.to_s %></td>
     <td><%= log.currency_name %></td>

@@ -33,6 +33,14 @@ class CurrenciesController < ApplicationController
     redirect_to currency
   end
 
+  def destroy
+    primary_key = params[:id]
+    currency = Currency.find(:first, conditions: {id: primary_key})
+    logger.info "Delete #{currency.name}"
+    currency.delete
+    redirect_to currencies_path
+  end
+
   def publish
     @currency = Currency.get(params[:currency_id])
   end

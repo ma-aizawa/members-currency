@@ -6,7 +6,7 @@ class Currency < ActiveRecord::Base
 
   class << self
     def get(currency_id)
-      self.class.find(:first, conditions: {currency_id: currency_id})
+      Currency.find(:first, conditions: {currency_id: currency_id})
     end
   end
 
@@ -22,7 +22,7 @@ class Currency < ActiveRecord::Base
   end
 
   def generate_currency_id
-    self.currency_id = self.class.all.max{|a, b| a.currency_id <=> b.currency_id}.currency_id + 1
+    self.currency_id = Currency.all.max{|a, b| a.currency_id <=> b.currency_id}.currency_id + 1
     self
   end
 
@@ -31,6 +31,15 @@ class Currency < ActiveRecord::Base
     distributed_currency.inject(0) do |sum, log|
       sum += log.amount
     end
+  end
+
+  def deletable?(member_id)
+    return false if member_id.nil?
+    member_id == self.publisher && self.circulation_zero?
+  end
+
+  def circulation_zero?
+    self.distribution.zero?
   end
 
   def publisher_name

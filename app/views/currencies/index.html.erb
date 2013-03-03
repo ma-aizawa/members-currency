@@ -17,7 +17,7 @@
   <% end %>
 </table>
 
-<% if login_member.non_publish? %>
+<% if @login_now && login_member.non_publish? %>
   <form method="GET" action="<%= new_currency_path %>">
     <div class="form-actions">
       <button type="submit" class="btn btn-primary">新規に通貨を発行する！</button>

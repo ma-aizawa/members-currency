@@ -1,3 +1,4 @@
+# -*- encoding: UTF-8 -*-
 module CurennciesHelper
   def currency_distribution_with_unit(currency)
     "#{number_with_delimiter(currency.distribution)} #{currency.unit}"
@@ -14,6 +15,12 @@ module CurennciesHelper
       <option value="#{member.member_id}">#{member.name}</option>
       TAG
     }.join("\n").html_safe
+  end
+
+  def delete_currency_link(currency)
+    (@login_now and currency.deletable?(login_member.member_id)) ?
+      link_to('Delete', currency, method: :delete, confirm: '本当に削除していいですか？') :
+      '<span class="muted">Delete</span>'.html_safe
   end
 end
 
