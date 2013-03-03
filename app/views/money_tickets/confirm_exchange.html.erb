@@ -1,0 +1,29 @@
+<%= form_tag({controller: 'money_tickets', action: 'use'}, class: 'form-horizontal') do |f| %>
+  <fieldset>
+    <legend>換金</legend>
+    <div class="control-group">
+      <label class="control-label">換金対象の通貨</label>
+      <div class="controls">
+        <p><%= @currency.name %></p>
+        <input type="hidden" name="[exchange][currency]" value="<%= @currency.currency_id %>">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">換金額</label>
+      <div class="controls">
+        <p><%= @amount.amount %></p>
+        <input type="hidden" name="[exchange][amount]" value="<%= @amount.amount %>">
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">換金する！</button>&nbsp;
+    <button id="cancel" type="button" class="btn">戻る</button>
+  </div>
+<% end %>
+<script>
+  $(function(){
+    exchaneg = new Exchange();
+  });
+</script>
+

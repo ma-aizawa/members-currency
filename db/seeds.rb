@@ -1,4 +1,3 @@
-
 5.times do |n|
   if Member.where(member_id: n).empty?
     Member.create(member_id: n, name: "Member#{n}", profile: "The number of #{n} member!")
@@ -66,6 +65,13 @@ Member.all.each do |member|
     ).inject(0) {|sum, log|
       sum += log.amount
     }
+    AmountOfCurrency.find(
+      :all,
+      conditions: {
+        member_id: member.member_id,
+        currency_id: currency.currency_id
+      }
+    ).each{|a|a.delete}
     AmountOfCurrency.create(
       member_id: member.member_id,
       currency_id: currency.currency_id,
@@ -75,10 +81,13 @@ Member.all.each do |member|
 end
 
 100.times do |n|
+  expire = DateTime.current.next_year
   MoneyTicket.create(
     ticket_id: n,
     currency_id: -1,
     amount: 500,
-    status: MoneyTicket::NO_USE
+    status: MoneyTicket::NO_USE,
+    expire_date: expire
   )
 end
+

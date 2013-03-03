@@ -12,9 +12,13 @@ module MembersHelper
     )
   end
 
-  def get_amount_of_500_per_options(member, currency)
+  def get_amount_of_500_per_options_by_member(member, currency)
+    get_amount_of_500_per_options(member.currency_amount(currency.currency_id))
+  end
+
+  def get_amount_of_500_per_options(max_amount)
     option_tag_list = []
-    0.step(member.currency_amount(currency.currency_id), 500) do |amount|
+    0.step(max_amount, 500) do |amount|
       option_tag_list.push(
         <<-TAG
         <option value="#{amount}">#{amount}</option>

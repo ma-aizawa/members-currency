@@ -23,7 +23,7 @@
       <label class="control-label">Given amount</label>
       <div class="controls">
         <select class="span2" name="given_amount">
-          <%= get_amount_of_500_per_options(@from_member, @currency) %>
+          <%= get_amount_of_500_per_options_by_member(@from_member, @currency) %>
         </select>
         <%= @currency.unit %>
       </div>

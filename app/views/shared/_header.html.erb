@@ -5,7 +5,7 @@
       <li>Login:&nbsp;<%= login_member_name %></li>
     <% end %>
     </ul>
-    <h3>メンバーと通貨の実験アプリ</h3>
+    <h3><a href="/">メンバーと通貨の実験アプリ</a></h3>
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
@@ -23,6 +23,9 @@
               <%= link_to 'お金チケットリスト', :money_tickets %>
             </li>
             <% if @login_now %>
+            <li class="exchange">
+              <%= link_to '換金', :exchange_point %>
+            </li>
             <li class="pull-right logout">
               <%= link_to 'Logout', :logout %>
             </li>
@@ -32,7 +35,7 @@
       </div>
     </div>
     <% if flash.key?(:notice) %>
-      <div class="control-group success"><span class="help-inline"><%= flash[:error] %></span></div>
+      <div class="control-group success"><span class="help-inline"><%= flash[:notice] %></span></div>
     <% end %>
     <% if flash.key?(:alert) %>
       <div class="control-group warning"><span class="help-inline"><%= flash[:alert] %></span></div>

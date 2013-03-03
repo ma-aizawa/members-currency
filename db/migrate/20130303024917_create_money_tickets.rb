@@ -6,6 +6,7 @@ class CreateMoneyTickets < ActiveRecord::Migration
       t.integer :amount
       t.string :status
       t.datetime :used_date
+      t.datetime :expire_date
 
       t.timestamps
     end

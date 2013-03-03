@@ -2,6 +2,11 @@ ja:
   message:
     invalid_message: '登録データに誤りがあります。もう一度入力してください。'
     confirm_delete: '本当に削除していいですか？'
+    less_amount_for_exchange: '換金出来る量を持っていません。'
+    ticket_insufficient: '換金に失敗しました。換金可能なチケットが足りない可能性が高いです。チケットが十分にある場合はシステム管理者に連絡してください。'
+    success_exchange: '%{currency}を%{amount}換金しました。'
+  log:
+    exchange: "%{name}が%{currency}を%{amount}換金"
   currencies:
     new:
       name: '通貨名'

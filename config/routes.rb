@@ -11,5 +11,8 @@ MembersCurrency::Application.routes.draw do
   post '/member/give/:from_id/:to_id/:currency_id', to: 'members#give', as: :give
   get '/currency/publish/:currency_id', to: 'currencies#publish', as: :currency_publish
   post '/currency/publish/:currency_id', to: 'currencies#add_amount', as: :post_currency_publish
+  get '/money_ticket/exchange', to: 'money_tickets#exchange', as: :exchange_point
+  post '/money_ticket/exchange', to: 'money_tickets#confirm_exchange', as: :confirm_exchange
+  post '/money_ticket/use', to: 'money_tickets#use', as: :use_point
 end
 

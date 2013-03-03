@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20130303024917) do
     t.integer  "amount"
     t.string   "status"
     t.datetime "used_date"
+    t.datetime "expire_date"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

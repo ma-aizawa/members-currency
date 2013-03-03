@@ -77,6 +77,11 @@ class Member < ActiveRecord::Base
     end
   end
 
+  def exchange(amount)
+    exchange_currency = ExchangeCurrency.new(self.member_id, amount)
+    exchange_currency
+  end
+
   class CurrencyInformation
     attr_accessor :id
     attr_accessor :name
@@ -132,6 +137,45 @@ class Member < ActiveRecord::Base
       when :give
         "#{from.name} give #{currency.name} to #{to_member.name}"
       end
+    end
+  end
+
+  class ExchangeCurrency
+    attr_accessor :currency_id, :member_id, :amount
+
+    def initialize(member_id, amount)
+      self.member_id = member_id
+      self.amount = amount
+    end
+
+    def of(currency_id)
+      self.currency_id = currency_id
+      self
+    end
+
+    def run
+      member = Member.get(self.member_id)
+      currency = Currency.get(self.currency_id)
+      ticket_list = MoneyTicket.exchange_tickets(self.amount)
+
+      ticket_list.each do |ticket|
+        ticket.status = MoneyTicket::USED
+        ticket.used_date = DateTime.current
+        ticket.save
+      end
+
+      log = LogForCurrency.new
+      log.from_member_id = LogForCurrency::SYSTEM_ID
+      log.to_member_id = self.member_id
+      log.amount = self.amount
+      log.operation_date = DateTime.current
+      log.currency_id = self.currency_id
+      log.log = I18n.t('log.exchange', name: member.name, currency: currency.name, amount: self.amount)
+      log.save
+
+      member_amount = AmountOfCurrency.get(self.member_id, self.currency_id)
+      member_amount.amount -= self.amount
+      member_amount.save
     end
   end
 end
