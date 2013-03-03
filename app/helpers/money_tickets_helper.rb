@@ -32,4 +32,10 @@ module MoneyTicketsHelper
       end
     end
   end
+
+  def ticket_register?(member)
+    return false unless Currency.find(:first, conditions: {publisher: member.member_id})
+    true
+  end
 end
+

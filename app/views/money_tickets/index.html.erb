@@ -21,6 +21,15 @@
 </div>
 </form>
 
+<% if @login_now && ticket_register?(login_member) %>
+  <form method="GET" action="<%= new_money_ticket_path %>">
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">チケットの新規登録</button>
+    </div>
+  </form>
+<% end %>
+
+
 </div>
 <table class="table">
   <tr>

@@ -3,6 +3,10 @@ class MoneyTicketsController < ApplicationController
     @tickets = MoneyTicket.all
   end
 
+  def new
+
+  end
+
   def exchange
     redirect_to members_path and return unless login?
 
