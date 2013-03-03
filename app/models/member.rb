@@ -24,6 +24,10 @@ class Member < ActiveRecord::Base
     currency_info.amount
   end
 
+  def non_publish?
+    Currency.find(:all, conditions: {publisher: self.member_id}).blank?
+  end
+
   def give(given_amount, currency)
     operation = CurrencyOperation.new(self, :give)
     operation.target_currency(currency)

@@ -5,18 +5,22 @@
     <th>Currency Name</th>
     <th>Publisher</th>
     <td>流通量</th>
+    <td></td>
   </tr>
   <% @currenies.each do |currency| %>
   <tr>
     <td><%= link_to currency.name, currency %></td>
     <td><%= currency.publisher_name %></td>
     <td><%= currency_distribution_with_unit(currency) %></td>
+    <td><%= delete_currency_link(currency) %></td>
   </tr>
   <% end %>
 </table>
 
-<form method="GET" action="<%= new_currency_path %>">
-  <div class="form-actions">
-    <button type="submit" class="btn btn-primary">新規に通貨を発行する！</button>
-  </div>
-</form>
+<% if login_member.non_publish? %>
+  <form method="GET" action="<%= new_currency_path %>">
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">新規に通貨を発行する！</button>
+    </div>
+  </form>
+<% end %>
