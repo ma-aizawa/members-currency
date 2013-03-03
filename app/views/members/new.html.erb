@@ -1,0 +1,23 @@
+<%= form_for @member, html: {class: 'form-horizontal'} do |f| %>
+  <fieldset>
+    <legend>メンバーの新規登録</legend>
+    <div class="<%= control_group_class(f, :name) %>">
+      <label class="control-label">名前</label>
+      <div class="controls">
+        <%= f.text_field :name, max_length: 255 %>
+        <%= error_message(@member, :name) %>
+      </div>
+    </div>
+    <div class="<%= control_group_class(f, :profile) %>">
+      <label class="control-label">プロフィール</label>
+      <div class="controls">
+        <%= f.text_area :profile, max_length: 512, rows: 5 %>
+        <%= error_message(@member, :profile) %>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">登録する！</button>
+  </div>
+<% end %>
+

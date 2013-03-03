@@ -31,5 +31,11 @@ module MembersHelper
       currency.currency_id
     )
   end
+
+  def delete_member_link(member)
+    member.deletable? ?
+      link_to("Delete", member, method: :delete, confirm: t('message.confirm_delete')) :
+      '<span class="muted">Delete</span>'.html_safe
+  end
 end
 

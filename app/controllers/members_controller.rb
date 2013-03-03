@@ -12,6 +12,40 @@ class MembersController < ApplicationController
     end
   end
 
+  def new
+    @member = Member.new
+  end
+
+  def create
+    member = Member.new.load_data(params[:member])
+    member.generate_member_id
+
+    if member.invalid?
+      @member = member
+      flash.now[:error] = t('message.invalid_message')
+      render :new and return
+    end
+
+    member.save
+    redirect_to member
+  end
+
+
+  def destroy
+    primary_key = params[:id]
+    member = Member.find(:first, conditions: {id: primary_key})
+
+    unless member.deletable?
+      logger.warn "Illegal access! Delete #{member.name}."
+      flash[:error] = "Illegal operation!! Use normally."
+      redirect_to members_path and return
+    end
+
+    logger.info "Delete #{member.name} of member."
+    member.delete
+    redirect_to members_path
+  end
+
   def login
     member_id = params[:member_id]
     login_member = Member.get(member_id)

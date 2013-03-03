@@ -1,4 +1,3 @@
-# -*- encoding: UTF-8 -*-
 class CurrenciesController < ApplicationController
   def index
     @currenies = Currency.all
@@ -25,7 +24,7 @@ class CurrenciesController < ApplicationController
 
     if currency.invalid?
       @currency = currency
-      flash.now[:error] = "登録データに誤りがあります。もう一度入力してください。"
+      flash.now[:error] = t('message.invalid_message')
       render :new and return
     end
 
@@ -36,7 +35,14 @@ class CurrenciesController < ApplicationController
   def destroy
     primary_key = params[:id]
     currency = Currency.find(:first, conditions: {id: primary_key})
-    logger.info "Delete #{currency.name}"
+
+    unless currency.deletable?
+      logger.warn "Illegal access! Delete #{currency.name}."
+      flash[:error] = "Illegal operation!! Use normally."
+      redirect_to currencies_path and return
+    end
+
+    logger.info "Delete #{currency.name} of currency."
     currency.delete
     redirect_to currencies_path
   end
@@ -55,11 +61,11 @@ class CurrenciesController < ApplicationController
     currency.add(amount).of(currency).to(distribution_members).per(amount_per_member).by(publisher).run
 
     flash[:notice] = "Publish to members!"
-    redirect_to action: :index
+    redirect_to currency
   rescue Exception => ex
     flash.now[:alert] = 'Some error has occured. Please try again.'
     logger.warn ex
-    logger.debug ex.backtrace
+    logger.warn ex.backtrace
 
     @currency = currency
     render :publish

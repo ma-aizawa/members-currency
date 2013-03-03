@@ -33,17 +33,33 @@ class Currency < ActiveRecord::Base
     end
   end
 
+  def invalid?
+    super
+  end
+
   def deletable?(member_id)
     return false if member_id.nil?
     member_id == self.publisher && self.circulation_zero?
   end
 
   def circulation_zero?
-    self.distribution.zero?
+    self.distribution.zero? and LogForCurrency.find(:all, conditions: {currency_id: self.currency_id}).empty?
   end
 
   def publisher_name
     Member.get(self.publisher).name
+  end
+
+  def save
+    super
+
+    Member.all.each do |member|
+      amount = AmountOfCurrency.new
+      amount.member_id = member.member_id
+      amount.currency_id = self.currency_id
+      amount.amount = 0
+      amount.save
+    end
   end
 
   def add(amount)

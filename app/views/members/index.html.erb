@@ -7,13 +7,21 @@
     <th>Member ID</th>
     <th>Member Name</th>
     <th></th>
+    <th></th>
   </tr>
   <% @members.each do |member| %>
   <tr>
     <td><%= member.member_id %></td>
     <td><%= link_to member.name, member %></td>
     <td><%= login_link(@login_now, member) %></td>
+    <td><%= delete_member_link(member) %></td>
   </tr>
   <% end %>
 </table>
+
+<form method="GET" action="<%= new_member_path %>">
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">メンバーを新規登録</button>
+  </div>
+</form>
 

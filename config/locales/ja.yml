@@ -1,4 +1,7 @@
 ja:
+  message:
+    invalid_message: '登録データに誤りがあります。もう一度入力してください。'
+    confirm_delete: '本当に削除していいですか？'
   currencies:
     new:
       name: '通貨名'
@@ -15,4 +18,12 @@ ja:
             unit:
               blank: 'の入力は必須です。'
               too_long: 'は半角100文字までです。'
+        member:
+          attributes:
+            name:
+              blank: 'の入力は必須です。'
+              too_long: 'は半角255文字までです。'
+            profile:
+              blank: 'の入力は必須です。'
+              too_long: 'は半角512文字までです。'
 

@@ -2,10 +2,24 @@ class Member < ActiveRecord::Base
   attr_accessible :member_id, :name, :profile
   attr_accessor :currency_list
 
+  validates :name, presence: true, length: {maximum: 255}
+  validates :profile, presence: true, length: {maximum: 512}
+
   class << self
     def get(member_id)
       Member.find(:first, conditions: {member_id: member_id})
     end
+  end
+
+  def load_data(params)
+    self.name = params[:name]
+    self.profile = params[:profile]
+    self
+  end
+
+  def generate_member_id
+    self.member_id = Member.all.max{|a, b| a.member_id <=> b.member_id}.member_id + 1
+    self
   end
 
   def set_currency_info(currency)
@@ -28,11 +42,39 @@ class Member < ActiveRecord::Base
     Currency.find(:all, conditions: {publisher: self.member_id}).blank?
   end
 
+  def deletable?
+    distribution_zero?
+  end
+
+  def distribution_zero?
+    amounts = AmountOfCurrency.find(:all, conditions: {member_id: self.member_id})
+    amounts.all?{|amount| amount.amount.zero?}
+  end
+
+  def invalid?
+    super
+    unless self.distribution_zero?
+      self.errors[:error] = 'This data can not delete.'
+    end
+  end
+
   def give(given_amount, currency)
     operation = CurrencyOperation.new(self, :give)
     operation.target_currency(currency)
     operation.set_amount(given_amount)
     operation
+  end
+
+  def save
+    super
+
+    Currency.all.each do |currency|
+      amount = AmountOfCurrency.new
+      amount.amount = 0
+      amount.currency_id = currency.currency_id
+      amount.member_id = self.member_id
+      amount.save
+    end
   end
 
   class CurrencyInformation

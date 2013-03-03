@@ -4,14 +4,14 @@
     <div class="<%= control_group_class(f, :name) %>">
       <label class="control-label">通貨名</label>
       <div class="controls">
-        <%= f.text_field :name, max_length: 400 %>
+        <%= f.text_field :name, max_length: 255 %>
         <%= error_message(@currency, :name) %>
       </div>
     </div>
     <div class="<%= control_group_class(f, :unit) %>">
       <label class="control-label">通貨単位名</label>
       <div class="controls">
-        <%= f.text_field :unit, max_length: 255 %>
+        <%= f.text_field :unit, max_length: 100 %>
         <%= error_message(@currency, :unit) %>
       </div>
     </div>
