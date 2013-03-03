@@ -1,0 +1,30 @@
+<%= form_for @ticket, html: {class: 'form-horizontal'} do |f| %>
+  <fieldset>
+    <legend>お金チケットの追加登録</legend>
+    <div class="<%= control_group_class(f, :ticket_id) %>">
+      <label class="control-label">チケット番号</label>
+      <div class="controls">
+        <%= f.text_field :ticket_id %>
+        <%= error_message(@ticket, :ticket_id) %>
+      </div>
+    </div>
+    <div class="<%= control_group_class(f, :amount) %>">
+      <label class="control-label">金額</label>
+      <div class="controls">
+        <%= f.number_field :amount %>
+        <%= error_message(@ticket, :amount) %>
+      </div>
+    </div>
+    <div class="<%= control_group_class(f, :expire_date) %>">
+      <label class="control-label">使用期限</label>
+      <div class="controls">
+        <%= f.datetime_select :expire_date, {}, {class: 'span1'} %>
+        <%= error_message(@ticket, :expire_date) %>
+      </div>
+    </div>
+  </fieldset>
+  <div class0"form-actions">
+    <button type="submit" class="btn btn-primary">登録する！</button>
+  </div>
+<% end %>
+

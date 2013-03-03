@@ -4,7 +4,12 @@ class MoneyTicketsController < ApplicationController
   end
 
   def new
+    @ticket = MoneyTicket.new
+  end
 
+  def create
+
+    redirect_to money_tickets_path
   end
 
   def exchange

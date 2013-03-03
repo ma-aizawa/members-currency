@@ -30,7 +30,6 @@ class MembersController < ApplicationController
     redirect_to member
   end
 
-
   def destroy
     primary_key = params[:id]
     member = Member.find(:first, conditions: {id: primary_key})
