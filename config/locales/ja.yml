@@ -12,10 +12,18 @@ ja:
       present: '%{name}さんに%{currency}をプレゼント！'
   log:
     exchange: "%{name}が%{currency}を%{amount}換金"
+  members:
+    new:
+      name: '名前'
+      profile: 'プロフィール'
   currencies:
     new:
       name: '通貨名'
       unit: '通貨単位名'
+  money_tickets:
+    new:
+      ticket_id: 'チケット番号'
+      amount: '金額'
 
   activerecord:
     errors:

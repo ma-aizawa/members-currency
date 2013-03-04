@@ -52,10 +52,10 @@ class Member < ActiveRecord::Base
   end
 
   def invalid?
-    super
     unless self.distribution_zero?
       self.errors[:error] = 'This data can not delete.'
     end
+    super
   end
 
   def give(given_amount, currency)
