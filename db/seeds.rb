@@ -83,7 +83,7 @@ end
 100.times do |n|
   expire = DateTime.current.next_year
   MoneyTicket.create(
-    ticket_id: n,
+    ticket_id: "default-data-#{n}-new",
     currency_id: -1,
     amount: 500,
     status: MoneyTicket::NO_USE,

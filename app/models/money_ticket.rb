@@ -1,6 +1,9 @@
 class MoneyTicket < ActiveRecord::Base
   attr_accessible :amount, :currency_id, :ticket_id, :status, :used_date, :expire_date
 
+  validates :ticket_id, presence: true, length: {maximum: 30}
+  validates :amount, presence: true, numericality: true
+
   NO_USE = 'NO_USE'
   USED = 'USED'
 
@@ -34,6 +37,18 @@ class MoneyTicket < ActiveRecord::Base
     def invalid_amount?(amount)
       amount % 500 != 0
     end
+  end
+
+  def load_data(params)
+    self.ticket_id = params[:ticket_id]
+    self.amount = params[:amount]
+    self
+  end
+
+  def set_default_value
+    self.status = NO_USE
+    self.used_date = nil
+    self
   end
 
   def get_status

@@ -1,13 +1,25 @@
 class MoneyTicketsController < ApplicationController
   def index
-    @tickets = MoneyTicket.all
+    @tickets = MoneyTicket.find(:all, order: 'expire_date asc')
   end
 
   def new
     @ticket = MoneyTicket.new
+    @ticket.expire_date ||= DateTime.current.next_year
   end
 
   def create
+    # Insert params at new is for datetime.
+    ticket = MoneyTicket.new(params[:money_ticket]).load_data(params[:money_ticket])
+    ticket.set_default_value
+
+    if ticket.invalid?
+      @ticket = ticket
+      flash.now[:error] = t('message.invalid_message')
+      render :new and return
+    end
+
+    ticket.save
 
     redirect_to money_tickets_path
   end

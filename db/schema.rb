@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20130303024917) do
   end
 
   create_table "money_tickets", :force => true do |t|
-    t.integer  "ticket_id"
+    t.string   "ticket_id"
     t.integer  "currency_id"
     t.integer  "amount"
     t.string   "status"
