@@ -135,7 +135,7 @@ class Member < ActiveRecord::Base
     def operation_log
       case self.type
       when :give
-        "#{from.name} give #{currency.name} to #{to_member.name}"
+        I18n.t('message.give', from: self.from.name, to: self.to_member.name, currency: self.currency.name, amount:self.amount)
       end
     end
   end

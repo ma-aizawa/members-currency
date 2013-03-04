@@ -5,6 +5,10 @@ ja:
     less_amount_for_exchange: '換金出来る量を持っていません。'
     ticket_insufficient: '換金に失敗しました。換金可能なチケットが足りない可能性が高いです。チケットが十分にある場合はシステム管理者に連絡してください。'
     success_exchange: '%{currency}を%{amount}換金しました。'
+    distribute: '%{publisher}が%{currency}を%{amount}、%{name}に発行しました。'
+    give: '%{from}さんが%{to}さんに%{currency}を%{amount}、プレゼントしました。'
+    publish: '新規に通貨の流通を増やしました。'
+    error: 'エラーが発生しました。もう一度実行してください。'
   content:
     member:
       login: 'ログイン'

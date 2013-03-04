@@ -129,7 +129,7 @@ class Currency < ActiveRecord::Base
     def operation_log(member = nil)
       case self.type
       when :add
-        "#{self.publisher.name} add amount of #{self.currency.name}. Distribute to #{member.name}."
+        I18n.t('message.distribute', publisher: self.publisher.name, currency: self.currency.name, amount: self.amount, name: member.name)
       end
     end
   end

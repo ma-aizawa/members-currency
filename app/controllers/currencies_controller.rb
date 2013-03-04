@@ -60,10 +60,10 @@ class CurrenciesController < ApplicationController
 
     currency.add(amount).of(currency).to(distribution_members).per(amount_per_member).by(publisher).run
 
-    flash[:notice] = "Publish to members!"
+    flash[:notice] = t('message.publish')
     redirect_to currency
   rescue Exception => ex
-    flash.now[:alert] = 'Some error has occured. Please try again.'
+    flash.now[:alert] = t('message.error')
     logger.warn ex
     logger.warn ex.backtrace
 
