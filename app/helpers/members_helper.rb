@@ -1,13 +1,14 @@
 module MembersHelper
   def login_link(login_now, member)
-    login_now ? 'You can not login. Because you are logined.' : link_to('Login', login_path(member.member_id))
+    login_now ? t('content.member.login_now') : link_to(t('content.member.login'), login_path(member.member_id))
   end
 
   def give_page_link(to_member, currency_information)
-    return "It's you!" if login_member.member_id == to_member.member_id
+    return "-" if login_member.member_id == to_member.member_id
+
     from_member = login_member
     link_to(
-      "Give #{currency_information.name} to #{to_member.name}",
+      t('content.member.presetn', name: to_member.name, currency: currency_information.name),
       confirm_give_path(from_member.member_id, to_member.member_id, currency_information.id)
     )
   end

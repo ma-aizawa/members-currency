@@ -2,7 +2,7 @@
   <div class="masthead">
     <ul class="nav nav-pills pull-right">
     <% if @login_now %>
-      <li>Login:&nbsp;<%= login_member_name %></li>
+      <li><%= login_member_name %>&nbsp;さんがログイン中</li>
     <% end %>
     </ul>
     <h3><a href="/">メンバーと通貨の実験アプリ</a></h3>
@@ -27,7 +27,7 @@
               <%= link_to '換金', :exchange_point %>
             </li>
             <li class="pull-right logout">
-              <%= link_to 'Logout', :logout %>
+              <%= link_to 'ログアウト', :logout %>
             </li>
             <% end %>
           </ul>

@@ -1,8 +1,8 @@
 <%= form_for(@from_member, html: {class: 'form-horizontal', method: 'POST'}, url: create_give_action_path(@from_member, @to_member, @currency)) do |f| %>
   <fieldset>
-    <legend>Give <%= @currency.name %> to <%= @to_member.name %></legend>
+    <legend><%= @currency.name %>を <%= @to_member.name %> さんにプレゼント！</legend>
     <div class="control-group">
-      <label class="control-label"><%= @to_member.name %> has</label>
+      <label class="control-label"><%= @to_member.name %> さんが持っている<%= @currency.name %>は</label>
       <div class="controls">
         <span>
           <%= @to_member.currency_amount(@currency.currency_id) %>
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label">You have</label>
+      <label class="control-label">あなたが持っている<%= @currency.name %>は</label>
       <div class="controls">
         <span>
           <%= @from_member.currency_amount(@currency.currency_id) %>
@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label">Given amount</label>
+      <label class="control-label">プレゼントする額は</label>
       <div class="controls">
         <select class="span2" name="given_amount">
           <%= get_amount_of_500_per_options_by_member(@from_member, @currency) %>
@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="form-actions">
-      <button type="submit" class="btn btn-primary">Give my currency!!</button>
+      <button type="submit" class="btn btn-primary">プレゼントする！</button>
     </div>
   </fieldset>
 <% end %>
